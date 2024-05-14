@@ -174,7 +174,7 @@
 <style scoped>
     .chart {
         height: 600px;
-        width: 70%;
+        width: 80%;
         text-align: center;
         margin:auto;
     }
