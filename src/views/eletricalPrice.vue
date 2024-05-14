@@ -36,12 +36,12 @@
                     title: {
                         text: '近十年電價變化趨勢及售電量合計',
                         left: 'center',
-                       
+                    
                     },
                     tooltip: {
                         trigger: 'axis',
                         axisPointer: {
-                            type: 'cross' //十字定軸
+                        type: 'cross' //十字定軸
                         }
                     },
                     legend: {
@@ -81,13 +81,18 @@
                         data: [],//從數據中獲取的每年平均電價數據存入這個陣列中
                         label: {
                             show: true,//數據標籤將顯示在圖表中
-                            position: 'top'//數據標籤將顯示在每個數據點的上
+                            position: 'top',//數據標籤將顯示在每個數據點的上
+                            textStyle: {
+                                fontSize: 16, // 設置字體大小
+                            }
+                            
                         },
-                        color:"#CCEC60",
+                        color:"#2F5954", //折線顏色
                         shadowColor:"#E8FFF5",
                         shadowBlur:8,
                         borderColor:"#CCEC60",
                         symbolSize:12,//改變折線圖節點大小
+                        
                         
                         
                     },
@@ -98,7 +103,7 @@
                     data:[],//新的系列數據
                     // 设置柱状图样式
                     itemStyle: {
-                        color: '#2F5954', // 柱状图颜色
+                        color: '#CCEC60', // 柱状图颜色
                         // 陰影效果
                         shadowColor: '#31715C',
                         shadowBlur: 5,
@@ -106,12 +111,12 @@
                         borderColor: 'none',
                         borderWidth: 1,
                     label: {
-                        show: true, // 顯示標籤
-                        position: 'inside', // 標籤位置（也可以是 'inside'、'insideTop' 等）
+                        show: true, // 顯示長條圖標籤
+                        position: 'insideTop', // 標籤位置（也可以是 'inside'、'insideTop' 等）
                         color: '#ADFEDC', // 標籤字體颜色
-                        fontSize: 12, // 標籤字體大小
+                        fontSize: 20, // 標籤字體大小
                         fontWeight: 'bold', // 標籤字體粗细
-                        formatter: 'salesVolume', // 標籤内容格式化，{c} 表示數據值
+                        formatter: '{c}百億度', // 標籤内容格式化，{c} 表示數據值
                         },
                     }
                 }]
@@ -158,7 +163,7 @@
 
 <template>
     <div>
-        <button @click="fetchData()">電價變化點這裡看</button>
+        <button class="btn" @click="fetchData()">點這裡看圖表</button>
         <!-- 將 Vue 實例中的 option 資料屬性綁定到了 <v-chart> 元件的 option 屬性上。這樣做可以將 Vue 實例中的圖表配置資料傳遞給 <v-chart> 元件，從而渲染出相應的圖表。 -->
         <v-chart class="chart" :option="option" ref="chart" />
 
@@ -173,10 +178,26 @@
         text-align: center;
         margin:auto;
     }
+    .btn{
+        width: 120px;
+        height: 34px;
+        font-size: 14px;
+        font-weight: 700;
+        background-color: #2F5954;
+        border: none;
+        color: white;
+        transition: 0.3s;
+        border-radius:10px;
+        box-shadow: 3px 3px 0px 0px #c9d9cd;
 
-    .title{
-       
+        &:hover{
+            background-color:#C09F60
+        }
+        &:active{
+            scale: 0.8;
+        }
     }
+
 
     
 </style>
